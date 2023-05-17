@@ -1,4 +1,4 @@
-let todos = [
+const todos = [
   "Get milk",
   "Wash car",
   "Walk dog",
@@ -19,25 +19,20 @@ function updateTodo(idx, newText) {
 }
 
 function viewTodos() {
-  return `<h1>Todos:</h1>
+  return `
+  <h1>Todos:</h1>
   <ul>
   ${todos.map((todo, idx) => `
     <li>
-    ${todo} [${idx}]
-      <form method='POST' action='/todos/${idx}'>
-        <input name='newText'>
-        <button>Edit</button>
-      </form>
-      <form method='POST' action='/todos/${idx}/delete'>
-        <button>🚮</button>
-      </form>
+      ${todo} [${idx}]
     </li>
   `).join('\n')}
   </ul>
-
-  <form method='POST' action='/todos'>
-    <input name='todo'>
-    <button>+ Add</button>
-  </form>
   `;
 }
+
+const express = require('express');
+const app = express();
+
+app.get('/', (request, response) => { response.send(viewTodos()) });
+app.listen(8080);
