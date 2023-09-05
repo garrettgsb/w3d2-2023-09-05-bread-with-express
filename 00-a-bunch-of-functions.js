@@ -8,7 +8,6 @@ function decrement() { writeCounter(readCounter() - 1); }
 function setTo(value) { writeCounter(Number(value)); }
 function reset() { setTo(0); }
 
-
 // Mapping between Javascript functions and command line interface
 {
   const [_interpreter, _file, operation, value] = process.argv;
@@ -47,5 +46,5 @@ function reset() { setTo(0); }
     response.redirect('/')
   });
 
-  // app.listen(PORT, () => { console.log(`Listening on ${PORT}!`)});
+  app.listen(PORT, () => { console.log(`Listening on ${PORT}!`)});
 }
